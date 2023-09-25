@@ -17,7 +17,7 @@ const GitHubReadme: React.FC<{ username: string; repo: string }> = ({
           `https://api.github.com/repos/${username}/${repo}/readme`
         )
           .then((response) => response.json())
-          .then((data) => data.download_url)
+          .then((data: any) => data.download_url)
           .catch((error) => console.error(error));
 
         if (!readmeUrl) {
