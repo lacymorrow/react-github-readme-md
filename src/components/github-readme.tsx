@@ -56,12 +56,14 @@ const GitHubReadme: React.FC<{
     const ghContent = parse(readmeContent);
     return (
       <>
-        <div
-          className={`markdown-body ${className}`}
-          dangerouslySetInnerHTML={{
-            __html: ghContent,
-          }}
-        />
+        <div className={className}>
+          <div
+            className={`markdown-body`}
+            dangerouslySetInnerHTML={{
+              __html: ghContent,
+            }}
+          />
+        </div>
       </>
     );
   } catch (error) {
