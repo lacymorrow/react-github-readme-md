@@ -13,9 +13,20 @@ const Template: StoryFn<typeof GitHubReadme> = (args) => (
   <GitHubReadme {...args} />
 );
 
-export const Example = Template.bind({});
+export const LightMode = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
+LightMode.args = {
+  username: "lacymorrow",
+  repo: "react-github-readme-md",
+};
+
+export const DarkMode: StoryFn<typeof GitHubReadme> = (args) => (
+  <div className="dark">
+    <GitHubReadme {...args} />
+  </div>
+);
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+DarkMode.args = {
   username: "lacymorrow",
   repo: "react-github-readme-md",
 };
