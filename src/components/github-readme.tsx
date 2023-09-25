@@ -3,10 +3,11 @@ import { parse } from "marked";
 
 import "./github-markdown.css";
 
-const GitHubReadme: React.FC<{ username: string; repo: string }> = ({
-  username,
-  repo,
-}) => {
+const GitHubReadme: React.FC<{
+  username: string;
+  repo: string;
+  className?: string;
+}> = ({ username, repo, className }) => {
   const [readmeContent, setReadmeContent] = useState<string>("");
 
   useEffect(() => {
@@ -16,9 +17,11 @@ const GitHubReadme: React.FC<{ username: string; repo: string }> = ({
         const readmeUrl = await fetch(
           `https://api.github.com/repos/${username}/${repo}/readme`
         )
-          .then((response) => response.json())
-          .then((data: any) => data.download_url)
-          .catch((error) => console.error(error));
+          .then(async (response) => await response.json())
+          .then((data: { download_url: string }) => data.download_url)
+          .catch((error) => {
+            console.error(error);
+          });
 
         if (!readmeUrl) {
           throw new Error("Failed to fetch README path");
@@ -54,7 +57,7 @@ const GitHubReadme: React.FC<{ username: string; repo: string }> = ({
     return (
       <>
         <div
-          className="markdown-body my-8"
+          className={`markdown-body ${className}`}
           dangerouslySetInnerHTML={{
             __html: ghContent,
           }}
