@@ -12,12 +12,8 @@ Try switching your system between light and dark mode or add a `.dark` class to 
 
 
 ## Features
- * Use anywhere, browser or Node - UMD _([Browser Support](https://caniuse.com/#feat=fetch))_
- * Works in React + NextJS client/server (uses [isomorphic-fetch](https://www.npmjs.com/package/isomorphic-fetch))
- * Promise and Callback API
- * Fetch images for albums or artists
- * Multiple size options
- * Uses Spotify for image data
+ * Supports both `light` and `dark` modes
+ * Works in both the client and server
 
 
 ## Install
@@ -25,42 +21,17 @@ Try switching your system between light and dark mode or add a `.dark` class to 
 Using [NPM](https://npmjs.com):
 
 ```bash
-$ npm install album-art
+$ npm install react-github-readme-md
 ```
-
-In the browser:
-
-```html
-<!-- albumArt window global -->
-<script type="text/javascript" src="https://unpkg.com/album-art"></script>
-```
-(via Unpkg, or via [JSDelivr](https://cdn.jsdelivr.net/npm/album-art/index.min.js))
-
 
 
 ## Usage
 ```js
-const albumArt = require( 'album-art' )
+import { GitHubReadme } from "react-github-readme-md";
 
-await albumArt( 'Rush' ).then( console.log )
-//=> http://path/to/rush.jpg
-```
+// ...
 
-##### Callback
-```js
-await albumArt( 'Rush', ( error, response ) => {
-   console.log( response )
-
-   //=> http://path/to/rush.jpg
-})
-```
-
-##### Usage with album and size options
-```js
-await albumArt( 'Rush', {album: '2112', size: 'small'} )
-  .then( console.log )
-
-//=> http://path/to/rush_2112_small.jpg
+<GitHubReadme username="lacymorrow" repo="react-github-readme-md" />
 ```
 
 
@@ -80,4 +51,10 @@ The specified GitHub repository where the `README.md` is located.
 *Required*  
 Type: `string`
 
+
+## Credit
+
+Thanks to [Sindresorhus](https://github.com/sindresorhus) for his [`generate-github-markdown-css`](https://github.com/sindresorhus/generate-github-markdown-css) repo, used to generate the styles!
+
+## License
 [MIT](http://opensource.org/licenses/MIT) © [Lacy Morrow](http://lacymorrow.com)
