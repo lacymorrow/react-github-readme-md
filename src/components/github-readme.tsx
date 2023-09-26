@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { parse } from "marked";
 
-import "./github-markdown.css";
+import "./github-readme.css";
 
 const GitHubReadme: React.FC<{
   username: string;
