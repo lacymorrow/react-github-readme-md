@@ -9,6 +9,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
+    "publish": "npm run rollup && npm publish",
     "generate-css": "npx -y generate-github-markdown-css > src/components/github-markdown.css && echo 'Swap out for .dark class!'",
     "rollup": "rollup -c",
     "test": "jest",
