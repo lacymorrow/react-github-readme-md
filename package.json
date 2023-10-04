@@ -1,6 +1,6 @@
 {
   "name": "react-github-readme-md",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Render the README.md file of a GitHub Repository in React",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -9,7 +9,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "generate-gh-css": "npx -y generate-github-markdown-css > styles/github-markdown.css && echo 'Swap out for .dark class and move to styles!'",
+    "generate-css": "npx -y generate-github-markdown-css > src/components/github-markdown.css && echo 'Swap out for .dark class!'",
     "rollup": "rollup -c",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
@@ -73,6 +73,7 @@
     "react": "^18.2.0"
   },
   "dependencies": {
+    "generate-github-markdown-css": "^6.0.0",
     "marked": "^9.0.3",
     "whatwg-fetch": "^3.6.19"
   }
