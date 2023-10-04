@@ -20,3 +20,7 @@
 .markdown-body p a {
   display: inline-block;
 }
+
+.markdown-body table {
+	width: auto;
+}
