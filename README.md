@@ -42,13 +42,34 @@ Type: `string`
 
 The specified GitHub repository where the `README.md` is located.
 
-*Required*  
+_Required_  
 Type: `string`
+
+#### `props.addHeadingIds`
+
+Uses `marked-gfm-heading-id` to add `id` attributes to headings in the markdown so that `# Heading` becomes `<h1 id="heading">Heading</h1> and anchor links work.
+
+_optional_  
+Type: `boolean`
+default: `true`
+
+#### `props.linkify`
+
+Uses `marked-linkify-it` to parse fuzzy links in the markdown like google.com and turn them into links.
+
+_optional_  
+Type: `boolean`
+default: `false`
 
 
 ## Credit
 
 Thanks to [Sindresorhus](https://github.com/sindresorhus) for his [`generate-github-markdown-css`](https://github.com/sindresorhus/generate-github-markdown-css) repo, used to generate the styles!
+
+##### Also
+- [marked](https://github.com/markedjs/marked)
+- [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id)
+- [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT) © [Lacy Morrow](http://lacymorrow.com)

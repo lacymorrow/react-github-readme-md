@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import { gfmHeadingId } from "marked-gfm-heading-id";
+import markedLinkifyIt from "marked-linkify-it";
 
 import "./github-markdown-styles.css";
 import "./github-readme.css";
@@ -9,7 +10,9 @@ const GitHubReadme: React.FC<{
   username: string;
   repo: string;
   className?: string;
-}> = ({ username, repo, className }) => {
+  addHeadingIds?: boolean;
+  linkify?: boolean;
+}> = ({ username, repo, className, addHeadingIds = true, linkify = false }) => {
   const [readmeContent, setReadmeContent] = useState<string>("");
 
   useEffect(() => {
@@ -55,8 +58,15 @@ const GitHubReadme: React.FC<{
 
   // Parse the markdown content into HTML
   try {
+    if (linkify) {
+      // Parse links
+      marked.use(markedLinkifyIt({}, {}));
+    }
+
+    if (addHeadingIds) {
+      marked.use(gfmHeadingId({}));
+    }
     // Parse headings and add IDs with marked-gfm-heading-id
-    marked.use(gfmHeadingId({}));
 
     const ghContent = marked.parse(readmeContent);
     return (
