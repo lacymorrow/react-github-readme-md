@@ -4,11 +4,15 @@ declare const _default: import("@storybook/types").ComponentAnnotations<import("
     username: string;
     repo: string;
     className?: string | undefined;
+    addHeadingIds?: boolean | undefined;
+    linkify?: boolean | undefined;
 }>;
 export default _default;
 export declare const LightMode: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0a347bb9").R, {
     username: string;
     repo: string;
     className?: string | undefined;
+    addHeadingIds?: boolean | undefined;
+    linkify?: boolean | undefined;
 }>;
 export declare const DarkMode: StoryFn<typeof GitHubReadme>;
