@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { parse } from "marked";
+import { marked } from "marked";
+import { gfmHeadingId } from "marked-gfm-heading-id";
 
 import "./github-markdown-styles.css";
 import "./github-readme.css";
@@ -54,7 +55,10 @@ const GitHubReadme: React.FC<{
 
   // Parse the markdown content into HTML
   try {
-    const ghContent = parse(readmeContent);
+    // Parse headings and add IDs with marked-gfm-heading-id
+    marked.use(gfmHeadingId({}));
+
+    const ghContent = marked.parse(readmeContent);
     return (
       <>
         <div className={className}>
