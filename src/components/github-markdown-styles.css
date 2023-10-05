@@ -130,7 +130,8 @@
   --color-danger-fg: #d1242f;
 }
 
-.dark .markdown-body {
+.dark .markdown-body,
+[data-theme='dark'] {
   /*dark*/
   color-scheme: dark;
   --color-prettylights-syntax-comment: #8b949e;
