@@ -14,7 +14,8 @@
     "rollup": "rollup -c",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_622effee9715828"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,11 @@
     "github",
     "readme"
   ],
-  "author": "Lacy Morrow <me@lacymorrow.com> (http://lacymorrow.com/)",
+  "author": {
+    "name": "Lacy Morrow",
+    "email": "me@lacymorrow.com",
+    "url": "http://lacymorrow.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lacymorrow/react-github-readme-md/issues"
@@ -82,5 +87,7 @@
     "marked-gfm-heading-id": "^3.1.0",
     "marked-linkify-it": "^3.1.4",
     "whatwg-fetch": "^3.6.19"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "react-github-readme-md@1.1.0"
 }
