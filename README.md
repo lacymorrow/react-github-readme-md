@@ -3,6 +3,8 @@
 
 > Render the README.md file of a GitHub Repository in React
 
+[**Storybook Demo**](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md&buildNumber=5&k=6528ae3054fd2afdd25fb253-1200px-interactive-true&h=3&b=-1)
+
 Try switching your system between light and dark mode or add a `.dark` class to a parent element to see the dark theme.
 
 ## Features
