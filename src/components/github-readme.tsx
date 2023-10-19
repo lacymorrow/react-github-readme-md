@@ -3,7 +3,6 @@ import { marked } from "marked";
 import { gfmHeadingId } from "marked-gfm-heading-id";
 import markedLinkifyIt from "marked-linkify-it";
 
-// import "./github-markdown-styles.css";
 import "./github-readme.scss";
 
 const GitHubReadme: React.FC<{
