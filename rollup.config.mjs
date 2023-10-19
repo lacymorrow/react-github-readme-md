@@ -29,14 +29,13 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
 			postcss(),
-			// scss(),
-			// terser(),
+			terser(),
     ],
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
+    external: [/\.s?css$/],
   },
 ];

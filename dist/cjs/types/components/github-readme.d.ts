@@ -1,6 +1,5 @@
 import React from "react";
-import "./github-markdown-styles.css";
-import "./github-readme.css";
+import "./github-readme.scss";
 declare const GitHubReadme: React.FC<{
     username: string;
     repo: string;
