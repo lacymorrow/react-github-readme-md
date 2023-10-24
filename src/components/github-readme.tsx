@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import { gfmHeadingId } from "marked-gfm-heading-id";
 import markedLinkifyIt from "marked-linkify-it";
+import markedAlert from "marked-alert";
 
 import "./github-readme.scss";
-import markedAlert from "marked-alert";
 
 const GitHubReadme: React.FC<{
   username: string;
@@ -75,7 +75,7 @@ const GitHubReadme: React.FC<{
     const ghContent = marked.parse(readmeContent);
     return (
       <>
-        <div className={className}>
+        <div className={`github-readme-md ${className ? className : ""}`}>
           <div
             className={`markdown-body`}
             dangerouslySetInnerHTML={{

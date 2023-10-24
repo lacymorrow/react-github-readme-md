@@ -5,7 +5,7 @@
 
 [**Storybook Demo**](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md&buildNumber=5&k=6528ae3054fd2afdd25fb253-1200px-interactive-true&h=3&b=-1)
 
-Try switching your system between light and dark mode or add a `.dark` class to a parent element to see the dark theme.
+Try switching your system between light and dark mode or add a `.dark` class to a parent element to see the dark theme. The element is rendered with the class `github-markdown-readme` so you can style it however you like.
 
 ## Features
  * Supports both `light` and `dark` modes

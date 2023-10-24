@@ -1,5 +1,20 @@
 @import "./github-markdown-styles.scss";
 
+.markdown-body {
+  --color-neutral: rgb(48, 54, 61);
+  --color-accent: #2f81f7;
+  --color-done: #a371f7;
+  --color-attention: rgb(213, 164, 5);
+}
+
+.dark .markdown-body {
+  // done
+  --color-neutral: rgb(48, 54, 61);
+  --color-accent: rgb(9, 105, 218);
+  --color-done: rgb(130, 80, 223);
+  --color-attention: rgb(213, 164, 5);
+}
+
 .markdown-body,
 .markdown-body img {
   background-color: transparent;
@@ -23,4 +38,48 @@
 
 .markdown-body table {
   width: auto;
+}
+
+/* For Github Markdown Alerts: https://github.com/orgs/community/discussions/16925 */
+.markdown-alert {
+  padding: 0 1em;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: 0.25em solid var(--color-neutral);
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-accent);
+}
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-done);
+}
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-attention);
+}
+
+.color-fg-accent {
+  color: var(--color-accent);
+}
+
+.color-fg-done {
+  color: var(--color-done);
+}
+
+.color-fg-attention {
+  color: var(--color-attention);
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.text-semibold {
+  font-weight: 600;
+}
+.mb-1 {
+  margin-bottom: 4px;
+}
+.flex-items-center {
+  align-items: center;
 }
