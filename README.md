@@ -9,6 +9,7 @@ Try switching your system between light and dark mode or add a `.dark` class to 
 
 ## Features
  * Supports both `light` and `dark` modes
+ * Marked plugins add support for fuzzy links, heading anchors, and [GFM alerts](https://github.com/orgs/community/discussions/16925)
  * Works in both the client and server
 
 
@@ -62,6 +63,22 @@ Uses `marked-linkify-it` to parse fuzzy links in the markdown like google.com an
 _optional_  
 Type: `boolean`
 default: `false`
+
+
+## Plugins
+
+### Fuzzy Links
+
+See the [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it) package for more information.
+
+### Heading Anchors
+
+See the [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id) package for more information.
+
+### GFM Alerts
+
+You may need Tailwind CSS installed for the alerts to display correctly.
+See the [marked-alerts](https://github.com/bent10/marked-extensions/tree/main/packages/alerts) package for more information.
 
 
 ## Credit

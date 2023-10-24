@@ -4,6 +4,7 @@ import { gfmHeadingId } from "marked-gfm-heading-id";
 import markedLinkifyIt from "marked-linkify-it";
 
 import "./github-readme.scss";
+import markedAlert from "marked-alert";
 
 const GitHubReadme: React.FC<{
   username: string;
@@ -57,6 +58,10 @@ const GitHubReadme: React.FC<{
 
   // Parse the markdown content into HTML
   try {
+    // Allow GFM alerts: https://github.com/bent10/marked-extensions/tree/main/packages/alert
+    // https://github.com/orgs/community/discussions/16925
+    marked.use(markedAlert());
+
     if (linkify) {
       // Parse links
       marked.use(markedLinkifyIt({}, {}));
