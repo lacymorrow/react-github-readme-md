@@ -5,12 +5,11 @@
 
 [**Storybook Demo**](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md&buildNumber=5&k=6528ae3054fd2afdd25fb253-1200px-interactive-true&h=3&b=-1)
 
-Try switching your system between light and dark mode or add a `.dark` class to a parent element to see the dark theme. The element is rendered with the class `github-markdown-readme` so you can style it however you like.
-
 ## Features
+ * Render any Markdown file with GitHub styling
  * Supports both `light` and `dark` modes
  * Marked plugins add support for fuzzy links, heading anchors, and [GFM alerts](https://github.com/orgs/community/discussions/16925)
- * Works in both the client and server
+ * Works on both the client and server
 
 
 ## Install
@@ -29,6 +28,10 @@ import { GitHubReadme } from "react-github-readme-md";
 // ...
 
 <GitHubReadme username="lacymorrow" repo="react-github-readme-md" />
+
+// or 
+// <GitHubReadme src="path/to/my/file.md />
+
 ```
 
 
@@ -38,15 +41,23 @@ import { GitHubReadme } from "react-github-readme-md";
 
 The GitHub username.
 
-*Required*  
+__**Required**__ _(if `src` is not provided)_
 Type: `string`
 
 #### `props.repo`
 
 The specified GitHub repository where the `README.md` is located.
 
-_Required_  
+__**Required**__  _(if `src` is not provided)_
 Type: `string`
+
+#### `props.src`
+
+A path to a Markdown file. This can be a local path or a URL.
+
+__**Required**__ _(if `username` and `repo` are not provided)_
+Type: `string`
+
 
 #### `props.addHeadingIds`
 
