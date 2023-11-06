@@ -45,13 +45,14 @@ const GitHubReadme: React.FC<{
           // Allow passing a URL directly as a prop
           readmeUrl = src;
         } else {
-          const readmeUrl = await fetch(
+          readmeUrl = await fetch(
             `https://api.github.com/repos/${username}/${repo}/readme`
           )
             .then(async (response) => await response.json())
             .then((data: { download_url: string }) => data.download_url)
             .catch((error) => {
               console.error(error);
+              return "";
             });
         }
 
@@ -75,9 +76,8 @@ const GitHubReadme: React.FC<{
       }
     };
 
-    // fetchReadmeApi();
     fetchReadme();
-  }, [username, repo]);
+  }, [username, repo, src]);
 
   if (!readmeContent) {
     return null;

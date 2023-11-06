@@ -18,6 +18,7 @@ export const LightMode = Template.bind({});
 LightMode.args = {
   username: "lacymorrow",
   repo: "react-github-readme-md",
+  src: "",
 };
 
 export const DarkMode: StoryFn<typeof GitHubReadme> = (args) => (
@@ -29,4 +30,5 @@ export const DarkMode: StoryFn<typeof GitHubReadme> = (args) => (
 DarkMode.args = {
   username: "lacymorrow",
   repo: "react-github-readme-md",
+  src: "",
 };
