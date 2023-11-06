@@ -1,6 +1,9 @@
 @import "./github-markdown-styles.scss";
 
 .markdown-body {
+  // This prevents preformatted text from overflowing the container.
+  width: 100%;
+
   --color-neutral: rgb(48, 54, 61);
   --color-accent: #2f81f7;
   --color-done: #a371f7;

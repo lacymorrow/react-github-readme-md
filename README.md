@@ -34,6 +34,9 @@ import { GitHubReadme } from "react-github-readme-md";
 
 ```
 
+#### Notes
+
+`.markdown-body` class has `width: 100%` by default to prevent `<pre>` elements from overflowing its container. You can override this by passing a `className` prop or setting the `width` in your own CSS.
 
 ## API
 
