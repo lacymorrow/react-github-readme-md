@@ -1,34 +1,35 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { type StoryFn, type Meta } from "@storybook/react";
 import GitHubReadme from "./github-readme";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof GitHubReadme> = {
   title: "lacymorrow/react-github-readme-md",
   component: GitHubReadme,
-} as Meta<typeof GitHubReadme>;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: StoryFn<typeof GitHubReadme> = (args) => (
-  <GitHubReadme {...args} />
-);
-
-export const LightMode = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-LightMode.args = {
-  username: "lacymorrow",
-  repo: "react-github-readme-md",
-  src: "",
+  tags: ['autodocs'],
 };
 
-export const DarkMode: StoryFn<typeof GitHubReadme> = (args) => (
-  <div className="dark" style={{ background: "black" }}>
-    <GitHubReadme {...args} />
-  </div>
-);
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-DarkMode.args = {
-  username: "lacymorrow",
-  repo: "react-github-readme-md",
-  src: "",
+export default meta;
+type Story = StoryObj<typeof GitHubReadme>;
+
+export const LightMode: Story = {
+  args: {
+    username: "lacymorrow",
+    repo: "react-github-readme-md",
+    src: "",
+  },
+};
+
+export const DarkMode: Story = {
+  args: {
+    username: "lacymorrow",
+    repo: "react-github-readme-md",
+    src: "",
+  },
+  decorators: [
+    (Story) => (
+      <div className="dark" style={{ background: "black" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
