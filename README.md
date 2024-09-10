@@ -11,6 +11,9 @@
  * Marked plugins add support for fuzzy links, heading anchors, and [GFM alerts](https://github.com/orgs/community/discussions/16925)
  * Works on both the client and server
 
+> [!IMPORTANT]  
+> GFM alerts work too!
+
 
 ## Install
 
