@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <title>react-github-readme-md</title>
+  <!-- Rounded square — blue (markdown) -->
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="#2563eb"/>
+  <!-- Markdown M↓ glyph: stylized "M" + downward chevron -->
+  <g fill="#ffffff">
+    <!-- M: 5-point path -->
+    <path d="M58 76 L58 180 L80 180 L80 122 L108 154 L136 122 L136 180 L158 180 L158 76 L136 76 L108 110 L80 76 Z"/>
+    <!-- ↓ arrow: bar + chevron -->
+    <rect x="178" y="76" width="20" height="68"/>
+    <path d="M168 132 L188 162 L208 132 Z"/>
+  </g>
+</svg>

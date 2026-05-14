@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/lacymorrow/react-github-readme-md/discussions
+    about: Ask questions or share patterns.
+  - name: Storybook
+    url: https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md
+    about: Live interactive demo.

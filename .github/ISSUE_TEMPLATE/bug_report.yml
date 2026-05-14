@@ -1,0 +1,55 @@
+name: Bug report
+description: Markdown rendered incorrectly, an error, or styling issue
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: react-github-readme-md version
+      placeholder: "1.3.1"
+    validations:
+      required: true
+
+  - type: input
+    id: react
+    attributes:
+      label: React version
+      placeholder: "18.3.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: env
+    attributes:
+      label: Environment
+      options:
+        - Browser
+        - Next.js (client)
+        - Next.js (server)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Component props you used
+      description: Paste the `<GitHubReadme ... />` JSX
+      render: jsx
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually rendered?
+      description: Include screenshots if a styling/layout issue.
+    validations:
+      required: true

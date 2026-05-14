@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 200" fill="none">
+  <title>react-github-readme-md</title>
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="160" height="160" rx="34" fill="#2563eb"/>
+    <g fill="#ffffff">
+      <path d="M26 38 L26 100 L40 100 L40 67 L57 87 L74 67 L74 100 L88 100 L88 38 L74 38 L57 60 L40 38 Z"/>
+      <rect x="100" y="38" width="12" height="42"/>
+      <path d="M94 72 L106 90 L118 72 Z"/>
+    </g>
+  </g>
+  <text
+    x="210"
+    y="132"
+    font-family="ui-sans-serif, system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, sans-serif"
+    font-size="120"
+    font-weight="800"
+    letter-spacing="-6"
+    fill="#1a0b1f"
+  >react-github-readme-md</text>
+</svg>
