@@ -1,111 +1,98 @@
-# react-github-readme-md [<img src="https://github.com/lacymorrow/crossover/raw/master/src/static/meta/patreon-button.webp" style="height:40px;" height="40" align="right" />](https://www.patreon.com/bePatron?u=55065733)
-[![npm version](https://badge.fury.io/js/react-github-readme-md.svg)](https://badge.fury.io/js/react-github-readme-md) [![Maintainability](https://api.codeclimate.com/v1/badges/182efedf2a8b7f1ac89c/maintainability)](https://codeclimate.com/github/lacymorrow/react-github-readme-md/maintainability)
+<div align="center">
+  <a href="https://github.com/lacymorrow/react-github-readme-md">
+    <img src=".github/assets/logo-horizontal.svg" alt="react-github-readme-md" width="420">
+  </a>
 
-> Render the README.md file of a GitHub Repository in React
+  <p><strong>Render any GitHub README inside a React app</strong> ➔ GitHub styling, dark mode, GFM alerts, heading anchors, fuzzy links.</p>
 
-[**Storybook Demo**](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md&buildNumber=5&k=6528ae3054fd2afdd25fb253-1200px-interactive-true&h=3&b=-1)
+  <p>
+    <a href="https://www.npmjs.com/package/react-github-readme-md"><img alt="npm version" src="https://img.shields.io/npm/v/react-github-readme-md?style=flat"></a>
+    <a href="https://www.npmjs.com/package/react-github-readme-md"><img alt="npm downloads" src="https://img.shields.io/npm/dm/react-github-readme-md?style=flat"></a>
+    <a href="https://github.com/lacymorrow/react-github-readme-md/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/lacymorrow/react-github-readme-md/ci.yml?style=flat&label=CI"></a>
+    <a href="./LICENSE"><img alt="License" src="https://img.shields.io/npm/l/react-github-readme-md?style=flat"></a>
+    <a href="https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md"><img alt="Storybook" src="https://img.shields.io/badge/Storybook-demo-ff4785?style=flat"></a>
+  </p>
+</div>
+
+---
+
+> [!IMPORTANT]
+> GFM alerts work too! Like this one. Notes, warnings, tips — they all render with the same styling you see on GitHub.
 
 ## Features
- * Render any Markdown file with GitHub styling
- * Supports both `light` and `dark` modes
- * Marked plugins add support for fuzzy links, heading anchors, and [GFM alerts](https://github.com/orgs/community/discussions/16925)
- * Works on both the client and server
 
-> [!IMPORTANT]  
-> GFM alerts work too!
-
+- Render any Markdown file with **GitHub native styling**
+- **Light + dark** modes
+- [`marked`](https://github.com/markedjs/marked)-powered with plugins for **GFM alerts**, **heading anchors**, and **fuzzy links**
+- Works on both the client and server (SSR-safe)
+- TypeScript types included
+- Tiny API: one component, two ways to load content
 
 ## Install
 
-Using [NPM](https://npmjs.com):
-
 ```bash
-$ npm install react-github-readme-md
+npm install react-github-readme-md
 ```
-
 
 ## Usage
-```js
+
+### From a GitHub repo
+
+```jsx
 import { GitHubReadme } from "react-github-readme-md";
 
-// ...
-
-<GitHubReadme username="lacymorrow" repo="react-github-readme-md" />
-
-// or 
-// <GitHubReadme src="path/to/my/file.md />
-
+<GitHubReadme username="lacymorrow" repo="react-github-readme-md" />;
 ```
 
-#### Notes
+### From a path or URL
 
-`.markdown-body` class has `width: 100%` by default to prevent `<pre>` elements from overflowing its container. You can override this by passing a `className` prop or setting the `width` in your own CSS.
+```jsx
+<GitHubReadme src="path/to/my/file.md" />
+// or
+<GitHubReadme src="https://example.com/some.md" />
+```
+
+> [!TIP]
+> Live, interactive demo on [Chromatic / Storybook](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md).
+
+> [!NOTE]
+> `.markdown-body` is `width: 100%` by default so `<pre>` blocks don't overflow. Override via the `className` prop or your own CSS.
 
 ## API
 
-### `props.username`
+### `<GitHubReadme />`
 
-The GitHub username.
-
-__**Required**__ _(if `src` is not provided)_
-Type: `string`
-
-#### `props.repo`
-
-The specified GitHub repository where the `README.md` is located.
-
-__**Required**__  _(if `src` is not provided)_
-Type: `string`
-
-#### `props.src`
-
-A path to a Markdown file. This can be a local path or a URL.
-
-__**Required**__ _(if `username` and `repo` are not provided)_
-Type: `string`
-
-
-#### `props.addHeadingIds`
-
-Uses `marked-gfm-heading-id` to add `id` attributes to headings in the markdown so that `# Heading` becomes `<h1 id="heading">Heading</h1> and anchor links work.
-
-_optional_  
-Type: `boolean`
-default: `true`
-
-#### `props.linkify`
-
-Uses `marked-linkify-it` to parse fuzzy links in the markdown like google.com and turn them into links.
-
-_optional_  
-Type: `boolean`
-default: `false`
-
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `username` | `string` | | GitHub user/org. **Required** if `src` is not provided. |
+| `repo` | `string` | | GitHub repo name. **Required** if `src` is not provided. |
+| `src` | `string` | | Path or URL to a Markdown file. **Required** if `username` + `repo` aren't provided. |
+| `addHeadingIds` | `boolean` | `true` | Adds `id` attributes to headings (via [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id)) so anchor links work. |
+| `linkify` | `boolean` | `false` | Auto-link bare URLs in text (via [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it)). |
+| `className` | `string` | | Forwarded to the rendered container. |
 
 ## Plugins
 
-### Fuzzy Links
+shipped with the box:
 
-See the [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it) package for more information.
+- **GFM alerts** — `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`. Via [marked-alert](https://github.com/bent10/marked-extensions/tree/main/packages/alerts). You may need Tailwind CSS for the alerts to look right.
+- **Heading anchors** — Auto-generated `id` slugs. Via [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id).
+- **Fuzzy links** — Bare URLs (e.g. `google.com`) become clickable. Via [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it).
 
-### Heading Anchors
+## Related
 
-See the [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id) package for more information.
+- Other utilities by the author: [shipx](https://github.com/lacymorrow/shipx) · [react-is-online-context](https://github.com/lacymorrow/react-is-online-context).
 
-### GFM Alerts
+## Acknowledgments
 
-You may need Tailwind CSS installed for the alerts to display correctly.
-See the [marked-alerts](https://github.com/bent10/marked-extensions/tree/main/packages/alerts) package for more information.
-
-
-## Credit
-
-Thanks to [Sindresorhus](https://github.com/sindresorhus) for his [`generate-github-markdown-css`](https://github.com/sindresorhus/generate-github-markdown-css) repo, used to generate the styles!
-
-##### Also
-- [marked](https://github.com/markedjs/marked)
-- [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id)
-- [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it)
+- [@sindresorhus](https://github.com/sindresorhus) for [generate-github-markdown-css](https://github.com/sindresorhus/generate-github-markdown-css) — the source of the bundled GitHub styles.
+- [marked](https://github.com/markedjs/marked) — the markdown parser.
+- [marked-alert](https://github.com/bent10/marked-extensions), [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id), [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it) — the plugin trifecta.
 
 ## License
-[MIT](http://opensource.org/licenses/MIT) © [Lacy Morrow](http://lacymorrow.com)
+
+[MIT](./LICENSE) © [Lacy Morrow](https://lacymorrow.com)
+
+<div align="center">
+  <sub>If this saved you time, consider <a href="https://github.com/sponsors/lacymorrow">sponsoring on GitHub</a>, <a href="https://patreon.com/lacymorrow">supporting on Patreon</a>, or <a href="https://buymeacoffee.com/lm">buying a coffee</a>.</sub>
+</div>
