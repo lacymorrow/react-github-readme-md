@@ -79,6 +79,12 @@ shipped with the box:
 - **Heading anchors** — Auto-generated `id` slugs. Via [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id).
 - **Fuzzy links** — Bare URLs (e.g. `google.com`) become clickable. Via [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it).
 
+## Playground
+
+➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-github-readme-md/tree/main/examples/stackblitz?file=src/main.tsx)** — a tiny Vite + React + TS app with editable `username` / `repo` inputs that re-renders the chosen README live.
+
+Local copy: [`examples/stackblitz/`](./examples/stackblitz)
+
 ## Related
 
 - Other utilities by the author: [shipx](https://github.com/lacymorrow/shipx) · [react-is-online-context](https://github.com/lacymorrow/react-is-online-context).

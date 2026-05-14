@@ -23,12 +23,18 @@
     "url": "git+https://github.com/lacymorrow/react-github-readme-md.git"
   },
   "keywords": [
-    "javascript",
-    "typescript",
-    "markdown",
     "react",
+    "markdown",
     "github",
-    "readme"
+    "readme",
+    "marked",
+    "gfm",
+    "github-flavored-markdown",
+    "renderer",
+    "viewer",
+    "documentation",
+    "react-component",
+    "typescript"
   ],
   "author": {
     "name": "Lacy Morrow",
