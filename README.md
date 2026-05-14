@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/lacymorrow/react-github-readme-md">
-    <img src=".github/assets/logo-horizontal.svg" alt="react-github-readme-md" width="420">
+    <img src="https://raw.githubusercontent.com/lacymorrow/react-github-readme-md/main/.github/assets/logo-horizontal.svg" alt="react-github-readme-md" width="420">
   </a>
 
   <p><strong>Render any GitHub README inside a React app</strong> ➔ GitHub styling, dark mode, GFM alerts, heading anchors, fuzzy links.</p>
@@ -75,7 +75,7 @@ import { GitHubReadme } from "react-github-readme-md";
 
 shipped with the box:
 
-- **GFM alerts** — `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`. Via [marked-alert](https://github.com/bent10/marked-extensions/tree/main/packages/alerts). You may need Tailwind CSS for the alerts to look right.
+- **GFM alerts** — `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`. Via [marked-alert](https://github.com/bent10/marked-extensions/tree/main/packages/alerts). The bundled GitHub styles cover the alert blocks — no Tailwind required.
 - **Heading anchors** — Auto-generated `id` slugs. Via [marked-gfm-heading-id](https://www.npmjs.com/package/marked-gfm-heading-id).
 - **Fuzzy links** — Bare URLs (e.g. `google.com`) become clickable. Via [marked-linkify-it](https://www.npmjs.com/package/marked-linkify-it).
 
