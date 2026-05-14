@@ -1,5 +1,21 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Centered README hero, logo (blue Markdown M↓ icon on rounded square), 5 modern badges (incl. Storybook).
+- StackBlitz playground (`examples/stackblitz/`) — Vite + React + TS app with live `username` / `repo` inputs.
+- `.github/` community files: FUNDING, dependabot, ISSUE_TEMPLATE, PR template, SECURITY, CONTRIBUTING.
+- CI smoke-test workflow on Node 18/20/22.
+- Branded 1280×640 social preview banner.
+- CodeQL security scanning + Dependabot auto-merge workflow.
+
+### Changed
+
+- README: removed the "you may need Tailwind CSS" note for GFM alerts — bundled GitHub styles cover them.
+- npm keywords expanded (marked, gfm, renderer, viewer, documentation, react-component).
+
 ## [1.3.1] - 2024-09-10
 
 ### Fixed
