@@ -1,19 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { marked } from "marked";
+import { Marked } from "marked";
 import { gfmHeadingId } from "marked-gfm-heading-id";
 import markedLinkifyIt from "marked-linkify-it";
 import markedAlert from "marked-alert";
 
 import "./github-readme.scss";
 
-const GitHubReadme: React.FC<{
+type Props = {
   username?: string;
   repo?: string;
   src?: string;
   className?: string;
   addHeadingIds?: boolean;
   linkify?: boolean;
-}> = ({
+};
+
+// Build a parser per option-combination once, instead of mutating the global
+// `marked` singleton on every render.
+const parserCache = new Map<string, Marked>();
+const getParser = (addHeadingIds: boolean, linkify: boolean): Marked => {
+  const key = `${addHeadingIds ? 1 : 0}${linkify ? 1 : 0}`;
+  let parser = parserCache.get(key);
+  if (!parser) {
+    parser = new Marked();
+    // GFM alerts: https://github.com/bent10/marked-extensions/tree/main/packages/alert
+    parser.use(markedAlert());
+    if (addHeadingIds) parser.use(gfmHeadingId({}));
+    if (linkify) parser.use(markedLinkifyIt({}, {}));
+    parserCache.set(key, parser);
+  }
+  return parser;
+};
+
+const GitHubReadme: React.FC<Props> = ({
   username,
   repo,
   src,
@@ -21,99 +40,81 @@ const GitHubReadme: React.FC<{
   addHeadingIds = true,
   linkify = false,
 }) => {
-  if (!src && !username && !repo) {
-    console.error(
-      "react-github-readme-md: You must provide either a src or username and repo"
-    );
-    return null;
-  } else if (!src && (!username || !repo)) {
-    console.error(
-      "react-github-readme-md: You must provide both a username and repo"
-    );
-    return null;
-  }
-
   const [readmeContent, setReadmeContent] = useState<string>("");
 
   useEffect(() => {
-    // Function to fetch the README content from GitHub
+    if (!src && !username && !repo) {
+      console.error(
+        "react-github-readme-md: You must provide either a src or username and repo"
+      );
+      return;
+    }
+    if (!src && (!username || !repo)) {
+      console.error(
+        "react-github-readme-md: You must provide both a username and repo"
+      );
+      return;
+    }
+
+    let cancelled = false;
+
     const fetchReadme = async () => {
       try {
-        let readmeUrl = "";
-
-        if (src) {
-          // Allow passing a URL directly as a prop
-          readmeUrl = src;
-        } else {
-          readmeUrl = await fetch(
-            `https://api.github.com/repos/${username}/${repo}/readme`
-          )
-            .then(async (response) => await response.json())
-            .then((data: { download_url: string }) => data.download_url)
-            .catch((error) => {
-              console.error(error);
-              return "";
-            });
-        }
-
+        let readmeUrl = src;
         if (!readmeUrl) {
-          throw new Error("Failed to fetch README path");
+          const apiRes = await fetch(
+            `https://api.github.com/repos/${username}/${repo}/readme`
+          );
+          if (!apiRes.ok) {
+            throw new Error(
+              `Failed to look up README (${apiRes.status} ${apiRes.statusText})`
+            );
+          }
+          const data: unknown = await apiRes.json();
+          const downloadUrl =
+            data && typeof data === "object" && "download_url" in data
+              ? (data as { download_url: unknown }).download_url
+              : undefined;
+          if (typeof downloadUrl !== "string" || !downloadUrl) {
+            throw new Error("README response missing download_url");
+          }
+          readmeUrl = downloadUrl;
         }
 
         const response = await fetch(readmeUrl);
-
         if (!response.ok) {
-          throw new Error("Failed to fetch README");
+          throw new Error(
+            `Failed to fetch README (${response.status} ${response.statusText})`
+          );
         }
-
         const data = await response.text();
-
-        if (data) {
-          setReadmeContent(data);
-        }
+        if (!cancelled && data) setReadmeContent(data);
       } catch (error) {
-        console.error("react-github-readme-md: ", error);
+        console.error("react-github-readme-md:", error);
       }
     };
 
     fetchReadme();
+    return () => {
+      cancelled = true;
+    };
   }, [username, repo, src]);
 
-  if (!readmeContent) {
-    return null;
-  }
+  if (!readmeContent) return null;
 
-  // Parse the markdown content into HTML
   try {
-    // Allow GFM alerts: https://github.com/bent10/marked-extensions/tree/main/packages/alert
-    // https://github.com/orgs/community/discussions/16925
-    marked.use(markedAlert());
-
-    if (linkify) {
-      // Parse links
-      marked.use(markedLinkifyIt({}, {}));
-    }
-
-    if (addHeadingIds) {
-      marked.use(gfmHeadingId({}));
-    }
-    // Parse headings and add IDs with marked-gfm-heading-id
-
-    const ghContent = marked.parse(readmeContent);
+    const parser = getParser(addHeadingIds, linkify);
+    const ghContent = parser.parse(readmeContent) as string;
     return (
-      <>
-        <div className={`github-readme-md ${className ? className : ""}`}>
-          <div
-            className={`markdown-body`}
-            dangerouslySetInnerHTML={{
-              __html: ghContent,
-            }}
-          />
-        </div>
-      </>
+      <div className={`github-readme-md ${className ? className : ""}`}>
+        <div
+          className="markdown-body"
+          dangerouslySetInnerHTML={{ __html: ghContent }}
+        />
+      </div>
     );
   } catch (error) {
-    console.error("react-github-readme-md: ", error);
+    console.error("react-github-readme-md:", error);
     return null;
   }
 };
