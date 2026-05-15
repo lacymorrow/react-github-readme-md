@@ -10,8 +10,16 @@
   --color-attention: #d29922;
 }
 
+@media (prefers-color-scheme: dark) {
+  .markdown-body:not([data-theme='light']) {
+    --color-neutral: rgb(48, 54, 61);
+    --color-accent: rgb(9, 105, 218);
+    --color-done: rgb(130, 80, 223);
+    --color-attention: rgb(154, 103, 0);
+  }
+}
+
 .dark .markdown-body {
-  // done
   --color-neutral: rgb(48, 54, 61);
   --color-accent: rgb(9, 105, 218);
   --color-done: rgb(130, 80, 223);
