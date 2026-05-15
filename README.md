@@ -56,7 +56,7 @@ import { GitHubReadme } from "react-github-readme-md";
 ```
 
 > [!TIP]
-> Live, interactive demo on [Chromatic / Storybook](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-github-readme-md).
+> Live, interactive demo on [Chromatic / Storybook](https://main--6528a9ef83709c394594fc93.chromatic.com).
 
 > [!NOTE]
 > `.markdown-body` is `width: 100%` by default so `<pre>` blocks don't overflow. Override via the `className` prop or your own CSS.
