@@ -23,7 +23,8 @@ describe('GitHubReadme', () => {
     const originalFetch = global.fetch
     global.fetch = jest.fn((input: RequestInfo | URL) => {
       const url = typeof input === 'string' ? input : input.toString()
-      if (url.includes('api.github.com')) {
+      const hostname = new URL(url).hostname
+      if (hostname === 'api.github.com') {
         return Promise.resolve(
           new Response(JSON.stringify({ download_url: 'https://example.com/README.md' }), {
             status: 200,
