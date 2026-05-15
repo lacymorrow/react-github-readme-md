@@ -84,7 +84,7 @@ shipped with the box:
 
 ## Playground
 
-➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-github-readme-md/tree/main/examples/stackblitz?file=src/main.tsx)** — a tiny Vite + React + TS app with editable `username` / `repo` inputs that re-renders the chosen README live.
+➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-github-readme-md/tree/main/examples/stackblitz)** — a tiny Vite + React + TS app with editable `username` / `repo` inputs that re-renders the chosen README live.
 
 Local copy: [`examples/stackblitz/`](./examples/stackblitz)
 

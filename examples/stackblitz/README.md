@@ -4,7 +4,7 @@ A minimal Vite + React + TypeScript app that renders any GitHub repo's README in
 
 ## Open it live
 
-➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-github-readme-md/tree/main/examples/stackblitz?file=src/main.tsx)**
+➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-github-readme-md/tree/main/examples/stackblitz)**
 
 ## Run locally
 
