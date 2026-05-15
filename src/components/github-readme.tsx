@@ -13,6 +13,7 @@ type Props = {
   className?: string;
   addHeadingIds?: boolean;
   linkify?: boolean;
+  theme?: "light" | "dark" | "auto";
 };
 
 // Build a parser per option-combination once, instead of mutating the global
@@ -39,6 +40,7 @@ const GitHubReadme: React.FC<Props> = ({
   className,
   addHeadingIds = true,
   linkify = false,
+  theme = "auto",
 }) => {
   const [readmeContent, setReadmeContent] = useState<string>("");
 
@@ -109,6 +111,7 @@ const GitHubReadme: React.FC<Props> = ({
       <div className={`github-readme-md ${className ? className : ""}`}>
         <div
           className="markdown-body"
+          data-theme={theme !== "auto" ? theme : undefined}
           dangerouslySetInnerHTML={{ __html: ghContent }}
         />
       </div>
