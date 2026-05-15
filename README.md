@@ -1,6 +1,9 @@
 <div align="center">
   <a href="https://github.com/lacymorrow/react-github-readme-md">
-    <img src="https://raw.githubusercontent.com/lacymorrow/react-github-readme-md/main/.github/assets/logo-horizontal.svg" alt="react-github-readme-md" width="420">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lacymorrow/react-github-readme-md/main/.github/assets/logo-horizontal-dark.svg">
+      <img src="https://raw.githubusercontent.com/lacymorrow/react-github-readme-md/main/.github/assets/logo-horizontal.svg" alt="react-github-readme-md" width="420">
+    </picture>
   </a>
 
   <p><strong>Render any GitHub README inside a React app</strong> ➔ GitHub styling, dark mode, GFM alerts, heading anchors, fuzzy links.</p>
