@@ -53,7 +53,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@chromatic-com/storybook": "^1",
     "@rollup/plugin-commonjs": "^26.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.3.0",
     "@storybook/addon-essentials": "^8.2.9",
