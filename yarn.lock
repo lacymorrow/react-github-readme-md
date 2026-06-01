@@ -9264,13 +9264,13 @@ __metadata:
   linkType: hard
 
 "marked-gfm-heading-id@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "marked-gfm-heading-id@npm:4.1.0"
+  version: 4.1.4
+  resolution: "marked-gfm-heading-id@npm:4.1.4"
   dependencies:
     github-slugger: "npm:^2.0.0"
   peerDependencies:
-    marked: ">=13 <15"
-  checksum: 18e1fff23556e8cf792a6e8675099637dd9c25e96a5b5c5b02fbf3c59ccbe3087ac536377d55a684b06f76dd4ac55d19eba1f087860b77a219ccd640c2306144
+    marked: ">=13 <19"
+  checksum: 677982332f26e64fce426c00219b7b6ee9a45dd87e3e83ee0606b42bdb0548fe04789767aa2119573343db0143d8417afd60654d9fc7f3ba421ca3030f9755f4
   languageName: node
   linkType: hard
 
