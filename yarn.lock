@@ -81,7 +81,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.18.9, @babel/core@npm:^7.23.0, @babel/core@npm:^7.23.7, @babel/core@npm:^7.24.4, @babel/core@npm:^7.25.2":
+"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.18.9, @babel/core@npm:^7.23.0, @babel/core@npm:^7.23.7, @babel/core@npm:^7.24.4, @babel/core@npm:^7.25.2, @babel/core@npm:^7.28.0":
   version: 7.29.7
   resolution: "@babel/core@npm:7.29.7"
   dependencies:
@@ -1876,7 +1876,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/traverse@npm:^7.29.7":
+"@babel/traverse@npm:^7.28.0, @babel/traverse@npm:^7.29.7":
   version: 7.29.7
   resolution: "@babel/traverse@npm:7.29.7"
   dependencies:
@@ -1913,7 +1913,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.29.7":
+"@babel/types@npm:^7.28.2, @babel/types@npm:^7.29.7":
   version: 7.29.7
   resolution: "@babel/types@npm:7.29.7"
   dependencies:
@@ -3681,6 +3681,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/react-dom-shim@npm:10.4.2":
+  version: 10.4.2
+  resolution: "@storybook/react-dom-shim@npm:10.4.2"
+  peerDependencies:
+    "@types/react": ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    "@types/react-dom": ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    storybook: ^10.4.2
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: ae851a2b86adce768abb4649eddd6fad6d6e11e96791a185891accf121aebb30af4102f9a23107ff647d02c1820f8fbfeafce575f3efe57ade4314036ac25b12
+  languageName: node
+  linkType: hard
+
 "@storybook/react-dom-shim@npm:8.2.9":
   version: 8.2.9
   resolution: "@storybook/react-dom-shim@npm:8.2.9"
@@ -3723,7 +3741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:8.2.9, @storybook/react@npm:^8.2.9":
+"@storybook/react@npm:8.2.9":
   version: 8.2.9
   resolution: "@storybook/react@npm:8.2.9"
   dependencies:
@@ -3757,6 +3775,32 @@ __metadata:
     typescript:
       optional: true
   checksum: 319134bf466d172d62cf59f9d9b9ebc1499ffa8428a77aa0184e0a75e234cfd4b1d968eda6776309ab719c5bc9a332a87346522854ed74069039f6f971dd16e4
+  languageName: node
+  linkType: hard
+
+"@storybook/react@npm:^10.4.2":
+  version: 10.4.2
+  resolution: "@storybook/react@npm:10.4.2"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    "@storybook/react-dom-shim": "npm:10.4.2"
+    react-docgen: "npm:^8.0.2"
+    react-docgen-typescript: "npm:^2.2.2"
+  peerDependencies:
+    "@types/react": ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    "@types/react-dom": ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    storybook: ^10.4.2
+    typescript: ">= 4.9.x"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+    typescript:
+      optional: true
+  checksum: 0c698d63abf645db2af574e86fb1c578593cc5ffd587d511e7bd6d005df19cdcd94b28447b430416c58d0f21571d683cd12ab11c23e5e93f80ae5b2344a3272e
   languageName: node
   linkType: hard
 
@@ -3896,7 +3940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/babel__core@npm:^7.18.0":
+"@types/babel__core@npm:^7.18.0, @types/babel__core@npm:^7.20.5":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
   dependencies:
@@ -3943,6 +3987,15 @@ __metadata:
   dependencies:
     "@babel/types": "npm:^7.20.7"
   checksum: 7ba7db61a53e28cac955aa99af280d2600f15a8c056619c05b6fc911cbe02c61aa4f2823299221b23ce0cce00b294c0e5f618ec772aa3f247523c2e48cf7b888
+  languageName: node
+  linkType: hard
+
+"@types/babel__traverse@npm:^7.20.7":
+  version: 7.28.0
+  resolution: "@types/babel__traverse@npm:7.28.0"
+  dependencies:
+    "@babel/types": "npm:^7.28.2"
+  checksum: b52d7d4e8fc6a9018fe7361c4062c1c190f5778cf2466817cb9ed19d69fbbb54f9a85ffedeb748ed8062d2cf7d4cc088ee739848f47c57740de1c48cbf0d0994
   languageName: node
   linkType: hard
 
@@ -11768,6 +11821,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-docgen@npm:^8.0.2":
+  version: 8.0.3
+  resolution: "react-docgen@npm:8.0.3"
+  dependencies:
+    "@babel/core": "npm:^7.28.0"
+    "@babel/traverse": "npm:^7.28.0"
+    "@babel/types": "npm:^7.28.2"
+    "@types/babel__core": "npm:^7.20.5"
+    "@types/babel__traverse": "npm:^7.20.7"
+    "@types/doctrine": "npm:^0.0.9"
+    "@types/resolve": "npm:^1.20.2"
+    doctrine: "npm:^3.0.0"
+    resolve: "npm:^1.22.1"
+    strip-indent: "npm:^4.0.0"
+  checksum: 0231fb9177bc7c633f3d1f228eebb0ee90a2f0feac50b1869ef70b0a3683b400d7875547a2d5168f2619b63d4cc29d7c45ae33d3f621fc67a7fa6790ac2049f6
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:18":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -11826,7 +11897,7 @@ __metadata:
     "@storybook/addon-webpack5-compiler-babel": "npm:^3.0.3"
     "@storybook/blocks": "npm:^8.2.9"
     "@storybook/preset-scss": "npm:^1.0.3"
-    "@storybook/react": "npm:^8.2.9"
+    "@storybook/react": "npm:^10.4.2"
     "@storybook/react-webpack5": "npm:^8.2.9"
     "@storybook/test": "npm:^8.2.9"
     "@storybook/types": "npm:^8.2.9"
