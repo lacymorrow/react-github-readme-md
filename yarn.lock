@@ -9496,14 +9496,14 @@ __metadata:
   linkType: hard
 
 "marked-linkify-it@npm:^3.1.11":
-  version: 3.1.11
-  resolution: "marked-linkify-it@npm:3.1.11"
+  version: 3.1.15
+  resolution: "marked-linkify-it@npm:3.1.15"
   dependencies:
     "@types/linkify-it": "npm:^5.0.0"
     linkify-it: "npm:^5.0.0"
   peerDependencies:
-    marked: ">=4 <15"
-  checksum: b49bf7a82b00e5a1fbd639b97ae70895abeb4a298a085e021b087dcf895592af6527dda967fd914c75eadc299a9925eaf0bd76e077de1ddaee3aa7dc29248035
+    marked: ">=4 <19"
+  checksum: daee36b937e400e8e4a6c9da4acf2caddddfcf7383b9b37a102144307073f882376982a28ee465a777702a4244cfeba33efe62d337c4ee9d4db81021dff14a12
   languageName: node
   linkType: hard
 
