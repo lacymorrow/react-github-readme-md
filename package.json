@@ -98,7 +98,7 @@
     "react-dom": "18"
   },
   "dependencies": {
-    "marked": "14",
+    "marked": "18",
     "marked-alert": "^2.0.2",
     "marked-gfm-heading-id": "^4.1.0",
     "marked-linkify-it": "^3.1.11",

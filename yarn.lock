@@ -9507,12 +9507,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:14":
-  version: 14.1.2
-  resolution: "marked@npm:14.1.2"
+"marked@npm:18":
+  version: 18.0.5
+  resolution: "marked@npm:18.0.5"
   bin:
     marked: bin/marked.js
-  checksum: fb636a97a2f11acf4cca092836020281ff3bc573f3295b4f4639135a6188e4815b910ec8572eb5686e25580c9c383daf605b4a00fcb5e5626e5c65914755e4bd
+  checksum: 22763935a0a243c41851b010a086ea85a09951e379948b6aa629b6cecdcd66e3a5e8c4acac2f6b29c183c20609d3e5102495270207dfd5f4c46ddd773a4ddb9b
   languageName: node
   linkType: hard
 
@@ -11841,7 +11841,7 @@ __metadata:
     identity-obj-proxy: "npm:^3.0.0"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^30.4.1"
-    marked: "npm:14"
+    marked: "npm:18"
     marked-alert: "npm:^2.0.2"
     marked-gfm-heading-id: "npm:^4.1.0"
     marked-linkify-it: "npm:^3.1.11"
