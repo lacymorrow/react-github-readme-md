@@ -3435,14 +3435,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-onboarding@npm:^8.2.9":
-  version: 8.2.9
-  resolution: "@storybook/addon-onboarding@npm:8.2.9"
-  dependencies:
-    react-confetti: "npm:^6.1.0"
+"@storybook/addon-onboarding@npm:^10.5.4":
+  version: 10.5.4
+  resolution: "@storybook/addon-onboarding@npm:10.5.4"
   peerDependencies:
-    storybook: ^8.2.9
-  checksum: fe604e3ad5d1b6c848cc4260deeec5a0e2689179409b387c6b0f6a8f9d943ed9ddcf12753e026d51b82b420ad503be46bf7a7599200cefd96c35b30a8fa85c6b
+    storybook: ^10.5.4
+  checksum: 1b090670c59a559545c0105b66a5f99d8ee868a629b2423e1081603995dd847a1a78cbadf3178bbd62a4bea628c3f1a68290bfe529ccd3bb47bc3054df86336f
   languageName: node
   linkType: hard
 
@@ -12011,7 +12009,7 @@ __metadata:
     "@storybook/addon-interactions": "npm:^8.2.9"
     "@storybook/addon-links": "npm:^8.2.9"
     "@storybook/addon-mdx-gfm": "npm:^8.2.9"
-    "@storybook/addon-onboarding": "npm:^8.2.9"
+    "@storybook/addon-onboarding": "npm:^10.5.4"
     "@storybook/addon-webpack5-compiler-babel": "npm:^3.0.3"
     "@storybook/blocks": "npm:^8.2.9"
     "@storybook/preset-scss": "npm:^1.0.3"
