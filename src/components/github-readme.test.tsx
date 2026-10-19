@@ -57,4 +57,70 @@ describe('GitHubReadme', () => {
       global.fetch = originalFetch
     }
   })
+  // Regression test for https://github.com/lacymorrow/react-github-readme-md/issues/7
+  // A README rendered off github.com must point its relative images and links
+  // back at the repository instead of the host page's origin.
+  test('resolves relative images and links against the repository', async () => {
+    const markdown = [
+      '<p align="center">',
+      '  <img src="images/logo.png" alt="Logo" width="128">',
+      '</p>',
+      '',
+      '![Demo](images/demo.gif)',
+      '',
+      '[![Badge](https://img.shields.io/badge.svg)](https://example.com)',
+      '',
+      '[Contributing](CONTRIBUTING.md)',
+    ].join('\n')
+
+    const originalFetch = global.fetch
+    global.fetch = jest.fn((input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input.toString()
+      if (new URL(url).hostname === 'api.github.com') {
+        return Promise.resolve(
+          new Response(
+            JSON.stringify({
+              path: 'README.md',
+              download_url:
+                'https://raw.githubusercontent.com/lacymorrow/vscode-if-end-marker/main/README.md',
+            }),
+            { status: 200, headers: { 'Content-Type': 'application/json' } }
+          )
+        )
+      }
+      return Promise.resolve(new Response(markdown, { status: 200 }))
+    }) as jest.Mock
+
+    try {
+      const { container } = render(
+        <GitHubReadme username="lacymorrow" repo="vscode-if-end-marker" />
+      )
+
+      await waitFor(() => {
+        expect(container.querySelector('img')).not.toBeNull()
+      })
+
+      const sources = Array.from(container.querySelectorAll('img')).map((img) =>
+        img.getAttribute('src')
+      )
+      expect(sources).toContain(
+        'https://raw.githubusercontent.com/lacymorrow/vscode-if-end-marker/main/images/logo.png'
+      )
+      expect(sources).toContain(
+        'https://raw.githubusercontent.com/lacymorrow/vscode-if-end-marker/main/images/demo.gif'
+      )
+      // Absolute badge URLs are untouched.
+      expect(sources).toContain('https://img.shields.io/badge.svg')
+
+      const hrefs = Array.from(container.querySelectorAll('a')).map((a) =>
+        a.getAttribute('href')
+      )
+      expect(hrefs).toContain(
+        'https://github.com/lacymorrow/vscode-if-end-marker/blob/main/CONTRIBUTING.md'
+      )
+      expect(hrefs).toContain('https://example.com')
+    } finally {
+      global.fetch = originalFetch
+    }
+  })
 })

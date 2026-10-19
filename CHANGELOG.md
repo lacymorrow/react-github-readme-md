@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Relative images and links now resolve against the repository instead of the
+  host page's origin. A README using `images/logo.png` renders that image on
+  any site, not a broken-image icon. Images point at `raw.githubusercontent.com`
+  and links at the `blob` view, both derived from the README's own download URL,
+  so a README in a subdirectory or on a non-default branch resolves correctly.
+  Absolute URLs, in-page anchors and `mailto:` are left alone.
+- `rollup -c` builds again. The TypeScript plugin now rejects a `declarationDir`
+  that sits outside the Rollup output directory, so both bundles share
+  `dir: "dist"`. Published file paths are unchanged.
+- The published package no longer ships declaration files for tests, stories and
+  the StackBlitz example.
+- `jest` runs again. `marked` and its extensions are ESM only and were being
+  skipped as `node_modules`.
+
 ### Added
 
 - Centered README hero, logo (blue Markdown M↓ icon on rounded square), 5 modern badges (incl. Storybook).
