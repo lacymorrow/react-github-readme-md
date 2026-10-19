@@ -110,11 +110,16 @@
     "jsx": "react",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "types",
+    "declarationDir": "dist/types",
     "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true
-  }
+  },
+
+  // Without this, declarations are also emitted for tests, stories and the
+  // StackBlitz example, and they ship in the published package.
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.stories.tsx"]
 }
