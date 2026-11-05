@@ -116,3 +116,27 @@ describe('rewriteRelativeUrls', () => {
     )
   })
 })
+
+describe('rewriteRelativeUrls: srcset and raw ">"', () => {
+  it('resolves every srcset candidate and keeps descriptors', () => {
+    const out = rewriteRelativeUrls(
+      '<picture><source srcset="dark.png 1x, /img/dark@2x.png 2x, https://x.io/a.png 480w" media="(prefers-color-scheme: dark)"></picture>',
+      base
+    )
+    expect(out).not.toMatch(/srcset="dark\.png/)
+    expect(out).toContain('https://x.io/a.png 480w')
+    expect(out).toMatch(/srcset="https:\/\/raw\.githubusercontent\.com\/[^ ]*dark\.png 1x, https:\/\/raw\.githubusercontent\.com\/[^ ]*img\/dark@2x\.png 2x, https:\/\/x\.io\/a\.png 480w"/)
+  })
+
+  it('resolves a srcset with no space after commas', () => {
+    const out = rewriteRelativeUrls('<img srcset="a.png 1x,b.png 2x">', base)
+    expect(out).not.toMatch(/srcset="a\.png/)
+    expect(out).not.toMatch(/,b\.png/)
+  })
+
+  it('rewrites an img whose alt contains a raw ">"', () => {
+    const out = rewriteRelativeUrls('<img alt="a > b" src="images/x.png">', base)
+    expect(out).toContain('alt="a > b"')
+    expect(out).toMatch(/src="https:\/\/raw\.githubusercontent\.com\/.*images\/x\.png"/)
+  })
+})
