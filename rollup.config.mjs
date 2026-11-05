@@ -11,14 +11,19 @@ import packageJson from "./package.json" with { type: "json" };
 export default [
   {
     input: "src/index.ts",
+    // Both outputs share `dir: "dist"` so that the single typescript plugin
+    // instance has one declarationDir inside both of them. The published file
+    // paths are unchanged.
     output: [
       {
-        file: packageJson.main,
+        dir: "dist",
+        entryFileNames: packageJson.main.replace(/^dist\//, ""),
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: "dist",
+        entryFileNames: packageJson.module.replace(/^dist\//, ""),
         format: "esm",
         sourcemap: true,
       },
@@ -33,7 +38,7 @@ export default [
     ],
   },
   {
-    input: "dist/esm/types/src/index.d.ts",
+    input: "dist/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.s?css$/],

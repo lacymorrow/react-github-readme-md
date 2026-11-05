@@ -27,6 +27,7 @@
 - Render any Markdown file with **GitHub native styling**
 - **Light + dark** modes
 - [`marked`](https://github.com/markedjs/marked)-powered with plugins for **GFM alerts**, **heading anchors**, and **fuzzy links**
+- Relative images and links resolve back to the repository, so a README written for github.com renders the same anywhere
 - Works on both the client and server (SSR-safe)
 - TypeScript types included
 - Tiny API: one component, two ways to load content

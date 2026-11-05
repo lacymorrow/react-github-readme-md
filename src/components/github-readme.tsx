@@ -4,6 +4,12 @@ import { gfmHeadingId } from "marked-gfm-heading-id";
 import markedLinkifyIt from "marked-linkify-it";
 import markedAlert from "marked-alert";
 
+import {
+  buildReadmeBase,
+  rewriteRelativeUrls,
+  type ReadmeBase,
+} from "./relative-urls";
+
 import "./github-readme.scss";
 
 type Props = {
@@ -42,7 +48,10 @@ const GitHubReadme: React.FC<Props> = ({
   linkify = false,
   theme = "auto",
 }) => {
-  const [readmeContent, setReadmeContent] = useState<string>("");
+  const [readme, setReadme] = useState<{
+    markdown: string;
+    base?: ReadmeBase;
+  }>({ markdown: "" });
 
   useEffect(() => {
     if (!src && !username && !repo) {
@@ -63,6 +72,8 @@ const GitHubReadme: React.FC<Props> = ({
     const fetchReadme = async () => {
       try {
         let readmeUrl = src;
+        // Repo-relative path of the README, used to find the repository root.
+        let readmePath: string | undefined;
         if (!readmeUrl) {
           const apiRes = await fetch(
             `https://api.github.com/repos/${username}/${repo}/readme`
@@ -72,15 +83,17 @@ const GitHubReadme: React.FC<Props> = ({
               `Failed to look up README (${apiRes.status} ${apiRes.statusText})`
             );
           }
-          const data: unknown = await apiRes.json();
-          const downloadUrl =
-            data && typeof data === "object" && "download_url" in data
-              ? (data as { download_url: unknown }).download_url
-              : undefined;
+          const body: unknown = await apiRes.json();
+          const data: Record<string, unknown> =
+            body && typeof body === "object"
+              ? (body as Record<string, unknown>)
+              : {};
+          const downloadUrl = data.download_url;
           if (typeof downloadUrl !== "string" || !downloadUrl) {
             throw new Error("README response missing download_url");
           }
           readmeUrl = downloadUrl;
+          readmePath = typeof data.path === "string" ? data.path : undefined;
         }
 
         const response = await fetch(readmeUrl);
@@ -89,8 +102,13 @@ const GitHubReadme: React.FC<Props> = ({
             `Failed to fetch README (${response.status} ${response.statusText})`
           );
         }
-        const data = await response.text();
-        if (!cancelled && data) setReadmeContent(data);
+        const markdown = await response.text();
+        if (!cancelled && markdown) {
+          setReadme({
+            markdown,
+            base: buildReadmeBase(readmeUrl, readmePath),
+          });
+        }
       } catch (error) {
         console.error("react-github-readme-md:", error);
       }
@@ -102,11 +120,14 @@ const GitHubReadme: React.FC<Props> = ({
     };
   }, [username, repo, src]);
 
-  if (!readmeContent) return null;
+  if (!readme.markdown) return null;
 
   try {
     const parser = getParser(addHeadingIds, linkify);
-    const ghContent = parser.parse(readmeContent) as string;
+    const parsed = parser.parse(readme.markdown) as string;
+    const ghContent = readme.base
+      ? rewriteRelativeUrls(parsed, readme.base)
+      : parsed;
     return (
       <div className={`github-readme-md ${className ? className : ""}`}>
         <div
