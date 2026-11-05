@@ -10,6 +10,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "release": "npm run build && npm publish",
     "generate-css": "npx -y generate-github-markdown-css > src/components/github-markdown.css && echo 'Swap out for .dark class!'",
     "build": "rollup -c",

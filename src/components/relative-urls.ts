@@ -105,8 +105,29 @@ const resolveAgainst = (
 
 // Code spans and fenced blocks arrive HTML-escaped (`&lt;img`), so matching on
 // a literal `<` only ever touches real markup.
-const TAG = /<(img|a|source|video)\b([^>]*)>/gi;
-const ATTR = /\b(src|href|poster)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'`=<>]+))/gi;
+// Quoted attribute values may contain a raw `>` (marked passes raw HTML
+// through), so the tag body is a run of quoted strings or non-`>` characters.
+const TAG = /<(img|a|source|video)\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi;
+const ATTR = /\b(srcset|src|href|poster)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'`=<>]+))/gi;
+
+// Candidates are `url [descriptor]` separated by commas. A URL may itself hold
+// a comma, so only commas after whitespace or at the end of a URL split.
+const resolveSrcset = (
+  value: string,
+  dirBase: string,
+  rootBase: string
+): string =>
+  value.replace(
+    /(^|\s|,)([^\s,][^\s]*?)(,*)(?=\s|,|$)/g,
+    (match, lead: string, url: string, trailing: string) => {
+      // Descriptors (`2x`, `480w`) sit after a URL and never need resolving.
+      if (/^\d+(?:\.\d+)?[wx]$/i.test(url) && lead !== "," && lead !== "")
+        return match;
+      return needsResolving(url)
+        ? `${lead}${resolveAgainst(url, dirBase, rootBase)}${trailing}`
+        : match;
+    }
+  );
 
 /**
  * Rewrite relative `src`, `href` and `poster` attributes in rendered README
@@ -129,9 +150,14 @@ export const rewriteRelativeUrls = (html: string, base: ReadmeBase): string =>
         unquoted?: string
       ) => {
         const value = doubleQuoted ?? singleQuoted ?? unquoted;
-        if (value === undefined || !needsResolving(value)) return attribute;
+        if (value === undefined) return attribute;
+        if (attributeName.toLowerCase() !== "srcset" && !needsResolving(value))
+          return attribute;
         const quote = singleQuoted !== undefined ? "'" : '"';
-        const href = resolveAgainst(value.trim(), dirBase, rootBase);
+        const href =
+          attributeName.toLowerCase() === "srcset"
+            ? resolveSrcset(value, dirBase, rootBase)
+            : resolveAgainst(value.trim(), dirBase, rootBase);
         return `${attributeName}=${quote}${href}${quote}`;
       }
     );
