@@ -8,7 +8,8 @@ const base = buildReadmeBase(DOWNLOAD_URL, 'README.md')!
 describe('buildReadmeBase', () => {
   test('derives raw and blob bases from the download URL', () => {
     expect(base).toEqual({
-      imageDir:
+      imageDir: 'BROKEN-ON-PURPOSE',
+      imageDirOrig:
         'https://raw.githubusercontent.com/lacymorrow/vscode-if-end-marker/main/',
       imageRoot:
         'https://raw.githubusercontent.com/lacymorrow/vscode-if-end-marker/main/',
