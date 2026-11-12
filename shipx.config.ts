@@ -7,10 +7,13 @@ export default {
 		releaseBranch: "main",
 	},
 	steps: {
-		npm: true,
+		// npm publish is delegated to .github/workflows/release.yml (OIDC trusted
+		// publishing). No laptop or agent npm token needed. See LAC-4944.
+		npm: false,
 		githubRelease: true,
 		homebrew: false,
-		// No tag-triggered workflow in this repo, so there is no CI run to watch.
+		// shipx does not yet treat npm: false as delegated, so check the tag
+		// workflow by hand (LAC-6348).
 		watchCi: false,
 	},
 	hooks: {
